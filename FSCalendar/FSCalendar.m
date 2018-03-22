@@ -226,13 +226,13 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
     if (!FSCalendarInAppExtension) {
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-        view.backgroundColor = FSCalendarStandardLineColor;
+        view.backgroundColor = _appearance.lineColor;
         view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin; // Stick to top
         [self addSubview:view];
         self.topBorder = view;
         
         view = [[UIView alloc] initWithFrame:CGRectZero];
-        view.backgroundColor = FSCalendarStandardLineColor;
+        view.backgroundColor = _appearance.lineColor;
         view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin; // Stick to bottom
         [self addSubview:view];
         self.bottomBorder = view;
@@ -972,6 +972,9 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
 
 - (CGFloat)preferredWeekdayHeight
 {
+    if (_appearance.hideWeekday) {
+        return 0;
+    }
     if (_weekdayHeight == FSCalendarAutomaticDimension) {
         if (_preferredWeekdayHeight == FSCalendarAutomaticDimension) {
             if (!self.floatingMode) {

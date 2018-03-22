@@ -206,6 +206,13 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
  */
 @property (assign, nonatomic) FSCalendarSeparators separators;
 
+/**
+ * The line color.
+ */
+@property (strong, nonatomic) UIColor  *lineColor;
+
+@property (assign, nonatomic) BOOL hideWeekday;
+
 #if TARGET_INTERFACE_BUILDER
 
 // For preview only

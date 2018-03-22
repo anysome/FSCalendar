@@ -8,6 +8,8 @@
 
 import UIKit
 
+let FSCalendarStandardLineColor = UIColor.white
+
 class LoadViewExampleViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
 
     private weak var calendar: FSCalendar!
@@ -18,11 +20,15 @@ class LoadViewExampleViewController: UIViewController, FSCalendarDataSource, FSC
         view.backgroundColor = UIColor.groupTableViewBackground
         self.view = view
         
-        let height: CGFloat = UIDevice.current.model.hasPrefix("iPad") ? 400 : 300
+        let height: CGFloat = 600
         let calendar = FSCalendar(frame: CGRect(x: 0, y: self.navigationController!.navigationBar.frame.maxY, width: self.view.bounds.width, height: height))
         calendar.dataSource = self
         calendar.delegate = self
+        calendar.pagingEnabled = false
+        calendar.appearance.lineColor = UIColor.clear
+        calendar.appearance.hideWeekday = true
         calendar.backgroundColor = UIColor.white
+        calendar.clipsToBounds = true
         self.view.addSubview(calendar)
         self.calendar = calendar
         

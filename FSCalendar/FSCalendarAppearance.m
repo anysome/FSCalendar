@@ -71,12 +71,25 @@
         
         _borderColors = [NSMutableDictionary dictionaryWithCapacity:2];
         
+        _lineColor = FSCalendarStandardLineColor;
+        _hideWeekday = NO;
+        
 #if TARGET_INTERFACE_BUILDER
         _fakeEventDots = YES;
 #endif
         
     }
     return self;
+}
+
+- (void)setLineColor:(UIColor *)color
+{
+    if (color) {
+        _lineColor = color;
+    } else {
+        _lineColor = FSCalendarStandardLineColor;
+    }
+    [self.calendar configureAppearance];
 }
 
 - (void)setTitleFont:(UIFont *)titleFont
